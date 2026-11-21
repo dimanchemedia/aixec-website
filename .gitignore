@@ -1,0 +1,6 @@
+# Brand source files (charte PDF, sources) — never publish
+assets/BRANDING/
+
+# Local tooling
+.claude/
+.DS_Store
