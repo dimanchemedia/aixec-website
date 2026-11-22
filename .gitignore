@@ -4,3 +4,6 @@ assets/BRANDING/
 # Local tooling
 .claude/
 .DS_Store
+
+# Video ad sources (licensed Artlist audio, renders) — keep out of the public site
+marketing/

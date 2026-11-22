@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
-  <link rel="preload" as="image" href="assets/img/hero-1600.webp" imagesrcset="assets/img/hero-1000.webp 1000w, assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w" imagesizes="100vw" />
+  <link rel="preload" as="image" href="assets/img/brief-screen.webp" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -45,38 +45,57 @@
   <main id="main">
     <!-- ================= HERO ================= -->
     <section class="hero" aria-labelledby="hero-title">
-      <picture class="hero__media">
-        <img
-          src="assets/img/hero-1600.webp"
-          srcset="assets/img/hero-1000.webp 1000w, assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w"
-          sizes="100vw"
-          alt="Silhouette of an executive looking out over a city at sunset"
-          width="2400" height="1344"
-          fetchpriority="high" />
-      </picture>
+      <div class="hero__bg" aria-hidden="true"></div>
 
-      <div class="container hero__content">
-        <p class="badge"><span class="badge__tag">#1</span>Built for the C-Suite</p>
-        <h1 id="hero-title" class="hero__title">
-          <span class="text-accent">TOP</span> AI Strategy <em class="serif">insights</em>
-        </h1>
-        <p class="hero__lead">
-          Essential brief of AI strategy insights from leading consulting firms
-          for executives shaping the future.
-        </p>
-        <div class="hero__actions">
-          <a href="https://brief.aiexecutivemedia.com" class="btn btn--primary btn--lg">
-            Read the briefs
-            <svg class="btn__arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5"/></svg>
-          </a>
-          <a href="#framework" class="btn btn--ghost btn--lg">Discover the framework</a>
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="badge"><span class="badge__tag">#1</span>Built for the C-Suite</p>
+          <h1 id="hero-title" class="hero__title">
+            <span class="text-accent">TOP</span> AI Strategy <em class="serif">insights</em>
+          </h1>
+          <p class="hero__lead">
+            Essential brief of AI strategy insights from leading consulting firms
+            for executives shaping the future.
+          </p>
+          <div class="hero__actions">
+            <a href="https://brief.aiexecutivemedia.com" class="btn btn--primary btn--lg">
+              Read the briefs
+              <svg class="btn__arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5"/></svg>
+            </a>
+            <a href="#framework" class="btn btn--ghost btn--lg">Discover the framework</a>
+          </div>
+
+          <ul class="hero__proof" aria-label="Key facts">
+            <li><strong>5</strong> strategic perspectives</li>
+            <li><strong>Global</strong> leading consulting firms</li>
+            <li><strong>Executive-ready</strong> briefings</li>
+          </ul>
         </div>
 
-        <ul class="hero__proof" aria-label="Key facts">
-          <li><strong>5</strong> strategic perspectives</li>
-          <li><strong>Global</strong> leading consulting firms</li>
-          <li><strong>Executive-ready</strong> briefings</li>
-        </ul>
+        <figure class="hero__device">
+          <a class="phone" href="https://brief.aiexecutivemedia.com/ai-sovereignty-business-strategy/"
+             aria-label="Read the latest brief: Why Is AI Sovereignty Becoming a Strategic Priority for Business Leaders?">
+            <span class="phone__island" aria-hidden="true"></span>
+            <span class="phone__status" aria-hidden="true">
+              <span>9:41</span>
+              <span class="phone__icons">
+                <svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2.5" width="3" height="9.5" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+                <svg viewBox="0 0 26 12"><rect x="0.5" y="0.5" width="22" height="11" rx="3.5" fill="none" stroke="currentColor" opacity=".5"/><rect x="2.5" y="2.5" width="16" height="7" rx="2"/><rect x="24" y="4" width="1.6" height="4" rx=".8" opacity=".5"/></svg>
+              </span>
+            </span>
+            <span class="phone__screen">
+              <img src="assets/img/brief-screen.webp" width="780" height="4800"
+                   alt="The AI Executive brief “Why Is AI Sovereignty Becoming a Strategic Priority for Business Leaders?” shown on a phone" />
+            </span>
+          </a>
+          <p class="device-chip device-chip--bottom" aria-hidden="true">
+            <strong>AIXEC™</strong> 5 strategic perspectives
+          </p>
+          <figcaption class="device-chip device-chip--top">
+            <span class="device-chip__dot" aria-hidden="true"></span>
+            Latest brief · 19 Nov 2026
+          </figcaption>
+        </figure>
       </div>
     </section>
 
