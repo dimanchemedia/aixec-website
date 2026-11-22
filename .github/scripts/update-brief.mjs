@@ -35,13 +35,30 @@ const pick = (tag) => {
 };
 const title = pick('title');
 const link = pick('link');
+const published = new Date(pick('pubDate'));
+// "19 Nov 2026" in Paris time (fixed month names: Intl's en-GB would give "Sept")
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const [y, mo, d] = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit' })
+  .format(published).split('-');
+const isoDate = `${y}-${mo}-${d}`;
+const label = `${Number(d)} ${MONTHS[Number(mo) - 1]} ${y}`;
 const slug = new URL(link).pathname.replace(/^\/|\/$/g, '');
-console.log(`Latest brief: ${title}\n  ${link}`);
+console.log(`Latest brief: ${title}\n  ${link}\n  published ${label}`);
 
 // ---------- 2. Already up to date? ----------
 let html = readFileSync(HTML, 'utf8');
+const dateRe = /<time class="device-chip__date" datetime="[^"]*">[^<]*<\/time>/;
+const dateTag = `<time class="device-chip__date" datetime="${isoDate}">${label}</time>`;
 const current = (html.match(/class="phone" href="([^"]+)"/) || [])[1];
 if (current === link && !FORCE) {
+  // same brief: still keep the badge date in sync (e.g. if the post date was edited in Ghost)
+  if (dateRe.test(html) && !html.includes(dateTag)) {
+    writeFileSync(HTML, html.replace(dateRe, dateTag));
+    console.log(`Badge date updated to ${label}.`);
+    setOutput('changed', 'true');
+    setOutput('title', title.replace(/\n/g, ' '));
+    process.exit(0);
+  }
   console.log('Hero already shows this brief — nothing to do.');
   setOutput('changed', 'false');
   process.exit(0);
@@ -109,6 +126,7 @@ const replace = (re, to, label) => {
 replace(/class="phone" href="[^"]+"/, `class="phone" href="${attr(link)}"`, 'phone link');
 replace(/aria-label="Read the brief: [^"]*"/, `aria-label="Read the brief: ${t}"`, 'phone aria-label');
 replace(/alt="The AI Executive brief “[^”]*” shown on a phone"/, `alt="The AI Executive brief “${t}” shown on a phone"`, 'screen alt');
+replace(dateRe, dateTag, 'badge date');
 // cache-bust the screenshot so visitors get the new one
 html = html.replace(/assets\/img\/brief-screen\.webp(\?v=[^"]*)?/g, `assets/img/brief-screen.webp?v=${encodeURIComponent(slug)}`);
 writeFileSync(HTML, html);
