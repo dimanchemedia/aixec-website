@@ -700,7 +700,7 @@ strong { font-weight: 700; color: var(--text); }
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .header__nav { display: none; }
-  .header__inner > .btn { margin-left: auto; }
+  .header__inner > .header__actions { margin-left: auto; }
   .framework__grid { grid-template-columns: 1fr; }
   .framework__intro { position: static; }
   .benefits__grid { grid-template-columns: 1fr 1fr; }
@@ -752,3 +752,11 @@ strong { font-weight: 700; color: var(--text); }
   .cta .btn { width: 100%; }
   .footer__inner { flex-direction: column; align-items: flex-start; }
 }
+
+/* ---------- Subscribe CTAs ---------- */
+.header__actions { display: flex; align-items: center; gap: 8px; }
+.cta__signup { width: 100%; }
+.cta__signup iframe { display: block; }
+.cta__link { margin-top: 24px; color: var(--text-2); font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
+.cta__link:hover { color: var(--text); border-color: currentColor; }
+@media (max-width: 760px) { .header__briefs { display: none; } }
